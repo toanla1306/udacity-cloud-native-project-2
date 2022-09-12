@@ -10,7 +10,7 @@ COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
-COPY app/locations.proto location.proto
+COPY app/locations.proto locations.proto
 COPY app/server.py server.py
 
 COPY app/database database/

@@ -56,7 +56,7 @@ class LocationServiceServer(locations_pb2_grpc.LocationServiceServicer):
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
 locations_pb2_grpc.add_LocationServiceServicer_to_server(LocationServiceServer(), server)
 
-logging.debug("Server starting on port 5005...")
+print("Server starting on port 5005...")
 server.add_insecure_port("[::]:5005")
 server.start()
 

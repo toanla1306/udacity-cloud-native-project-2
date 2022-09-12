@@ -8,12 +8,13 @@ Sample implementation of a writer that can be used to write messages to gRPC.
 
 print("Sending sample payload...")
 
-channel = grpc.insecure_channel("localhost:5005")
+channel = grpc.insecure_channel("localhost:30002")
 stub = locations_pb2_grpc.LocationServiceStub(channel)
 def request_location_id(stub):
     location_id = locations_pb2.LocationRequestId(location_id="30")
-
+    print("checking")
     response = stub.GetLocationId(location_id)
+    print(response)
 
 def create_location(stub):
     new_location = locations_pb2.LocationMessage(
@@ -25,4 +26,4 @@ def create_location(stub):
     response = stub.LocationCreate(new_location)
     print(response)
 
-create_location(stub)
+request_location_id(stub)

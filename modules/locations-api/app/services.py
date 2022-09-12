@@ -18,7 +18,7 @@ class LocationService:
     def retrieve(location_id) -> Location:
         location, coord_text = (
             db.session.query(Location, Location.coordinate.ST_AsText())
-            .filter(Location.id == location_id)
+            .filter(Location.id == int(location_id))
             .one()
         )
 

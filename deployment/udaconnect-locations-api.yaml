@@ -1,4 +1,12 @@
 apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-udaconnect-locations-api
+data:
+  .dockerconfigjson: eyAJImF1dGhzIjogeyAJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7IAkJCSJhdXRoIjogImRHOWhibXhoTVRNd05qcGtZMnR5WDNCaGRGOHRaMUI2WWkxMWFDMURaWEZZTlVSck1rWnBXWFYzUmpNMlpuTT0iIAkJfSAJfSB9
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: v1
 kind: Service
 metadata:
   labels:
@@ -61,3 +69,5 @@ spec:
               name: db-env
               key: DB_PORT
       restartPolicy: Always
+      imagePullSecrets:
+      - name: secret-udaconnect-locations-api

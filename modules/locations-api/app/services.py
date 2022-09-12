@@ -16,12 +16,19 @@ logging.basicConfig(filename="log.txt", level=logging.DEBUG)
 class LocationService:
     @staticmethod
     def retrieve(location_id) -> Location:
-        location, coord_text = (
-            db.session.query(Location, Location.coordinate.ST_AsText())
-            .filter(Location.id == int(location_id))
-            .one()
-        )
+        # location, coord_text = (
+        #     db.session.query(Location, Location.coordinate.ST_AsText())
+        #     .filter(Location.id == int(location_id))
+        #     .one()
+        # )
 
-        # Rely on database to return text form of point to reduce overhead of conversion in app code
-        location.wkt_shape = coord_text
-        return location
+        # # Rely on database to return text form of point to reduce overhead of conversion in app code
+        # location.wkt_shape = coord_text
+        # return location
+        with db.Session() as dbs:
+            request_data = {"id": int(location_id)}
+            location = db.s.first(Location, **request_data)
+            db.s.flush()
+            db.s.commit()
+            return location
+            dbs.close()

@@ -20,6 +20,6 @@ COPY app/services.py services.py
 
 RUN python -m grpc_tools.protoc -I./  --python_out=./ --grpc_python_out=./ locations.proto
 
-EXPOSE 5001
+EXPOSE 5005
 
 ENTRYPOINT ["python", "server.py"]

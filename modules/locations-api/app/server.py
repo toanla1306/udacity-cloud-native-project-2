@@ -25,7 +25,7 @@ class LocationServiceServer(locations_pb2_grpc.LocationServiceServicer):
                 id = response.id,
                 latitude = response.latitude,
                 longitude = response.longitude,
-                creation_time = response.creation_time
+                creation_time = response.creation_time.strftime('%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             logging.debug("Cannot get any location with id %s....", location_id)

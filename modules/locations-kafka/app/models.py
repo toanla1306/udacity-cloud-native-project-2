@@ -17,8 +17,8 @@ class Person(db.Model):
     id = Column(Integer, primary_key=True)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
-    company_name = Column(String, nullable=False
-    
+    company_name = Column(String, nullable=False)
+
 class Location(db.Model):
     __tablename__ = "location"
 

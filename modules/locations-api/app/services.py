@@ -2,7 +2,7 @@ import logging
 from datetime import datetime, timedelta
 from typing import Dict, List
 
-from database import Session
+from database import session
 from models import Location
 from schemas import LocationSchema
 
@@ -18,7 +18,7 @@ class LocationService:
     @staticmethod
     def retrieve(location_id) -> Location:
         location, coord_text = (
-            Session.query(Location, Location.coordinate.ST_AsText())
+            session.query(Location, Location.coordinate.ST_AsText())
             .filter(Location.id == int(location_id))
             .one()
         )

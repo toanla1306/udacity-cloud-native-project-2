@@ -2,7 +2,7 @@
 import os
 # from sqla_wrapper import SQLAlchemy
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import Session
 
 DB_USERNAME = os.environ["DB_USERNAME"]
 DB_PASSWORD = os.environ["DB_PASSWORD"]
@@ -20,5 +20,5 @@ DB_NAME = os.environ["DB_NAME"]
 ) """
 
 engine = create_engine(f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}", echo=True)
-Session = sessionmaker(bind=engine)
-# conn = engine.connect()
+conn = engine.connect()
+session = Session(bind=conn)

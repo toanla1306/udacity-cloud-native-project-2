@@ -15,9 +15,9 @@ metadata:
 spec:
   ports:
   - name: "5001"
-    port: 5002
+    port: 5003
     targetPort: 5000
-    nodePort: 30003
+    nodePort: 30004
   selector:
     service: udaconnect-connection-api
   type: NodePort

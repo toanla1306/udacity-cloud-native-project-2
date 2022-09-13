@@ -26,4 +26,4 @@ def create_location(stub):
     response = stub.LocationCreate(new_location)
     print(response)
 
-request_location_id(stub)
+create_location(stub)

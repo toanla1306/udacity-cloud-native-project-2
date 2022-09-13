@@ -42,9 +42,8 @@ class LocationServiceServer(locations_pb2_grpc.LocationServiceServicer):
         print(request_value)
 
         TOPIC_NAME = 'locations'
-        # KAFKA_SERVER = 'localhost:9092'
         KAFKA_SERVER = 'kafka.default.svc.cluster.local'
-        producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
+        producer = KafkaProducer(bootstrap_servers=[KAFKA_SERVER])
         logging.debug("Kafka producer connected server....")
         kafka_data = json.dumps(request_value).encode()
         producer.send(TOPIC_NAME, kafka_data)

@@ -1,0 +1,133 @@
+openapi: 3.0.1
+info:
+  title: defaultTitle
+  description: defaultDescription
+  version: '0.1'
+servers:
+  - url: http://localhost:30004
+  - url: http://localhost:30003
+paths:
+  /api/persons/1:
+    get:
+      description: Auto generated using Swagger Inspector
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  company_name:
+                    type: string
+                  last_name:
+                    type: string
+                  id:
+                    type: integer
+                  first_name:
+                    type: string
+              examples:
+                '0':
+                  value: >
+                    {"id": 1, "last_name": "Trexler", "company_name": "Hampton,
+                    Hampton and McQuill", "first_name": "Pam"}
+      servers:
+        - url: http://localhost:30003
+    servers:
+      - url: http://localhost:30003
+  /api/persons:
+    get:
+      description: Auto generated using Swagger Inspector
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                '0':
+                  value: >
+                    [{"id": 5, "last_name": "Fargo", "company_name": "Alpha
+                    Omega Upholstery", "first_name": "Taco"}, {"id": 6,
+                    "last_name": "Shader", "company_name": "USDA", "first_name":
+                    "Frank"}, {"id": 1, "last_name": "Trexler", "company_name":
+                    "Hampton, Hampton and McQuill", "first_name": "Pam"}, {"id":
+                    8, "last_name": "Badman", "company_name": "Paul Badman &
+                    Associates", "first_name": "Paul"}, {"id": 9, "last_name":
+                    "Spring", "company_name": "The Chicken Sisters Restaurant",
+                    "first_name": "Otto"}, {"id": 2, "last_name": "Toan",
+                    "company_name": "FPT Software", "first_name": "La"}, {"id":
+                    3, "last_name": "La", "company_name": "FPT Software",
+                    "first_name": "Toan"}]
+      servers:
+        - url: http://localhost:30003
+    post:
+      description: Auto generated using Swagger Inspector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                company_name:
+                  type: string
+                last_name:
+                  type: string
+                first_name:
+                  type: string
+            examples:
+              '0':
+                value: "{\r\n    \"first_name\":\"Duc\",\r\n    \"last_name\":\"Toan\",\r\n    \"company_name\":\"FPT Software\"\r\n}"
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  company_name:
+                    type: string
+                  last_name:
+                    type: string
+                  id:
+                    type: integer
+                  first_name:
+                    type: string
+              examples:
+                '0':
+                  value: >
+                    {"id": 4, "last_name": "Toan", "company_name": "FPT
+                    Software", "first_name": "Duc"}
+      servers:
+        - url: http://localhost:30003
+    servers:
+      - url: http://localhost:30003
+  /api/persons/5/connection:
+    get:
+      description: Auto generated using Swagger Inspector
+      parameters:
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2020-09-01'
+        - name: distance
+          in: query
+          schema:
+            type: string
+          example: '555'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2020-04-01'
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+      servers:
+        - url: http://localhost:30004
+    servers:
+      - url: http://localhost:30004

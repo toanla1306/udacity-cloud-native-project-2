@@ -1,0 +1,9 @@
+Frontend Client:
+Still use API Restful, with protocol HTTP  Because client can use in any browser to access frontend
+Connection Route:
+Because Connection Route is called by Frontend client so that I will still use API Restful, protocol HTTP to communicate with frontend client easiest than gRPC and Kafka.
+Person Route:
+Because Connection Route is called by Frontend client so that I will still use API Restful, protocol HTTP to communicate with frontend client easiest gRPC and Kafka.
+Location Route:
+I will change type message passing in that route to gRPC with protocol buffer and Kafka with protocol TCP
+Because I think Location Route not be called in any client frontend, therefore I can easy to change message passing. Another I think when tracking location of user, we will face with streaming data.

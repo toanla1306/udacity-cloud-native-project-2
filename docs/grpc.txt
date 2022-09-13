@@ -1,0 +1,4 @@
+---GRPC DOCUMENT----
+- Endpoint of gRPC server:
+	GetLocationId: client will send location_id and then recevie messgae about location_id, latitude, longtitude grpc message)
+	LocationCreate: user will send information of new location, the data will send to kafka and save it to database. After that user will receive data in message response with the same data when they sent.

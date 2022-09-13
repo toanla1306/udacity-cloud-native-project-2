@@ -2,7 +2,7 @@ import logging
 from datetime import datetime, timedelta
 from typing import Dict, List
 
-from database import db
+from database import session
 from models import Location
 from schemas import LocationSchema
 
@@ -25,7 +25,7 @@ class LocationService:
         new_location.person_id = location["person_id"]
         new_location.creation_time = location["creation_time"]
         new_location.coordinate = ST_Point(location["latitude"], location["longitude"])
-        db.session.add(new_location)
-        db.session.commit()
+        session.add(new_location)
+        session.commit()
 
         return new_location

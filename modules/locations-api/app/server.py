@@ -25,7 +25,7 @@ class LocationServiceServer(locations_pb2_grpc.LocationServiceServicer):
                 id = response.id,
                 latitude = response.latitude,
                 longitude = response.longitude,
-                creation_time = response.creation_time
+                creation_time = response.creation_time.strftime('%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             logging.debug("Cannot get any location with id %s....", location_id)
@@ -42,9 +42,8 @@ class LocationServiceServer(locations_pb2_grpc.LocationServiceServicer):
         print(request_value)
 
         TOPIC_NAME = 'locations'
-        # KAFKA_SERVER = 'localhost:9092'
         KAFKA_SERVER = 'kafka.default.svc.cluster.local'
-        producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
+        producer = KafkaProducer(bootstrap_servers=[KAFKA_SERVER])
         logging.debug("Kafka producer connected server....")
         kafka_data = json.dumps(request_value).encode()
         producer.send(TOPIC_NAME, kafka_data)
@@ -56,7 +55,7 @@ class LocationServiceServer(locations_pb2_grpc.LocationServiceServicer):
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
 locations_pb2_grpc.add_LocationServiceServicer_to_server(LocationServiceServer(), server)
 
-logging.debug("Server starting on port 5005...")
+print("Server starting on port 5005...")
 server.add_insecure_port("[::]:5005")
 server.start()
 
